@@ -31,15 +31,28 @@ def main():
         clock.tick(max_fps)
         p.display.flip()
 
-def drawBoard(screen):
-
-
-def drawPieces(screen, board):
-
-
 def drawGameState(screen, gs):
     drawBoard(screen)
     drawPieces(screen, gs.board)
+
+
+def drawBoard(screen):
+    colors = [p.Color("white"), p.Color("gray")]
+    for r in range(dimension):
+        for c in range(dimension):
+            color = colors[((r+c) % 2)]
+            p.draw.rect(screen,color,p.Rect(c*sq_size, r*sq_size,sq_size,sq_size)
+            
+
+
+def drawPieces(screen, board):
+    for r in range(dimension):
+        for c in range(dimension):
+            piece = board[r][c]
+            if piece != "--":
+                screen.blit(IMAGES[piece],p.Rect(c*sq_size, r*sq_size,sq_size,sq_size))
+
+
 
 
 if __name__ == "__main__":
