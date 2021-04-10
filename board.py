@@ -23,10 +23,28 @@ def main():
     #print(gs.board)
     loadImages()
     running = True
+    sqSelected = ()
+    playerClicks = []
     while running:
         for e in p.event.get():
             if  e.type == p.QUIT:
                 running = False
+            elif e.type == p.MOUSEBUTTONDOWN:
+                location = p.mouse.get_pos()
+                col = location[0]//sq_size
+                row = location[1]//sq_size
+                if sqSelected == (row,col):
+                    sqSelected = ()
+                    playerClicks = []
+                else:
+                    sqSelected =(row,col)
+                    playerClicks.append(sqSelected)
+                if len(playerClicks) == 2:
+                    
+
+
+
+
         drawGameState(screen, gs)
         clock.tick(max_fps)
         p.display.flip()
